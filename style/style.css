@@ -48,6 +48,14 @@
 .app .room1 img {
   width: 350%;
   object-position: 50% 50%;
+  z-index: 1;
+}
+.app .room1 map {
+  height: 100%;
+}
+.app .room1 map area {
+  background-color: red;
+  z-index: 5;
 }
 
 html {
