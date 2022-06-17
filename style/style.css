@@ -31,9 +31,27 @@
 .app .buttonStart button {
   padding: 20px 80px;
 }
+.app .textPresentation {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0 15px;
+}
+.app .textPresentation p {
+  text-align: center;
+}
+.app .room1 {
+  height: 100%;
+  overflow-y: hidden;
+}
+.app .room1 img {
+  width: 350%;
+  object-position: 50% 50%;
+}
 
 html {
-  height: 100vh;
+  height: 100%;
 }
 
 body {
