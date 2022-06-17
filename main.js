@@ -1,4 +1,4 @@
-import anime from "./node_modules/animejs/lib/anime.es.js";
+import anime from "animejs/lib/anime.es.js";
 
 const buttonStart = document.getElementsByTagName("button")[0];
 
@@ -9,6 +9,14 @@ buttonStart.addEventListener("click", () => {
     easing: "easeInOutQuad",
   });
   setTimeout(() => {
-    document.location.href = "../rooms/room1/room1.html";
+    clearScreen();
   }, 800);
 });
+
+function clearScreen() {
+  document.getElementsByClassName("app")[0].innerHTML = "";
+}
+
+function roomOne() {}
+function roomTwo() {}
+function roomThree() {}
