@@ -48,6 +48,15 @@
 		img{
 			width: 350%;
 			object-position: 50% 50%;
+			z-index: 1;
+		}
+		map{
+			height: 100%;
+			
+			area{
+				background-color: red;
+				z-index:5;
+			}
 		}
 	}
 }

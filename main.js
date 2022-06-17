@@ -51,7 +51,18 @@ function roomOne() {
   createDiv.classList.add("room1");
   const createImage = document.createElement("img");
   createImage.setAttribute("src", "./img/room1.jpg");
+  createImage.setAttribute("usemap", "#room1");
+  const createMap = document.createElement("map");
+  createMap.setAttribute("name", "room1");
+  let createArea = document.createElement("area");
+  createArea.setAttribute("shape", "rect");
+  createArea.setAttribute("coords", "500,380,700,500");
+  createMap.appendChild(createArea);
   createDiv.appendChild(createImage);
+  createDiv.appendChild(createMap);
   app.appendChild(createDiv);
+  createArea.addEventListener("click", () => {
+    alert("l'ordinateur a été cliqué");
+  });
 }
 function roomThree() {}
