@@ -14,7 +14,7 @@ buttonStart.addEventListener("click", () => {
   });
   setTimeout(() => {
     clearScreen();
-    intro();
+    roomThree();
   }, 1000);
 });
 
@@ -196,6 +196,63 @@ function roomTwo() {
     createDivPhoto.appendChild(createImgMeme);
     createDiv.appendChild(createDivPhoto);
     checkPopUpClose("room2");
+  });
+}
+
+function roomThree() {
+  //Tout ce truc là c'est à afficher
+  const createDiv = document.createElement("div");
+  createDiv.classList.add("room3");
+  const createImage = document.createElement("img");
+  createImage.setAttribute("src", "./img/room3.jpg");
+  createImage.setAttribute("usemap", "#room3");
+  const createMap = document.createElement("map");
+  createMap.setAttribute("name", "room3");
+  let createArea1 = createArea("180,400,250,470"); //tasse
+  createMap.appendChild(createArea1);
+  let createArea2 = createArea("730,410,850,480"); //bloc note
+  createMap.appendChild(createArea2);
+  let createArea3 = createArea("650,650,750,500"); //poubelle lol
+  createMap.appendChild(createArea3);
+  let createArea4 = createArea("1200,580,1250,700", "test"); // cadre droite a replacer
+  createMap.appendChild(createArea4);
+  createDiv.appendChild(createImage);
+  createDiv.appendChild(createMap);
+  app.appendChild(createDiv);
+  //On vérifie le click sur le PC, y'a que à ce moment qu'on peut récupérer les indices
+  createArea1.addEventListener("click", () => {
+    //On créé une popup avec un msg
+    createPopUp(
+      "Vous avez trouvé une note avec écrit 'Trouvez les 3 indices pour sortir de cette salle' "
+    );
+    //On vérifie si y'a un click sur la croix
+    checkPopUpClose("room1");
+    //Et là vérifie si il clique sur une zone indice
+    createArea2.addEventListener("click", () => {
+      createPopUp(
+        "Vous avez trouvé un indice ! 'Une bonne photo c'est la clé !' "
+      );
+      //Opérateur ternaire (check google) si notre tableau ne contient PAS "indice1" on le met dans le tableau, sinon on fait rien
+      //Ca évite de pouvoir cliquer 3 fois sur le même indice et de push 3 fois le même indice dans le tableau
+      !inventory.includes("indice1") ? inventory.push("indice1") : null;
+      //Si il a récupéré les 3 indices, on lui balance la fin de la salle
+
+      checkPopUpClose("room1");
+    });
+    createArea3.addEventListener("click", () => {
+      createPopUp(
+        "Vous avez trouvé un indice ! 'Une bonne description c'est la clé !' "
+      );
+      !inventory.includes("indice2") ? inventory.push("indice2") : null;
+
+      checkPopUpClose("room1");
+    });
+    createArea4.addEventListener("click", () => {
+      createPopUp("Vous avez trouvé un indice ! 'Un beau CV c'est la clé !' ");
+      !inventory.includes("indice3") ? inventory.push("indice3") : null;
+
+      checkPopUpClose("room1");
+    });
   });
 }
 
