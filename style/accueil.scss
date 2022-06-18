@@ -59,4 +59,16 @@
 			}
 		}
 	}
+	.popUp{
+		background-color: white;
+		border : 2px solid black;
+		height: 10%;
+		display: flex;
+		justify-content: space-around;
+		align-items: center;
+		p{
+			margin-bottom: 0;
+			text-align: center;
+		}
+	}
 }
