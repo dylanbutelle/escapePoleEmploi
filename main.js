@@ -2,6 +2,8 @@ import anime from "animejs/lib/anime.es.js";
 //Cstte
 const buttonStart = document.getElementsByTagName("button")[0];
 const app = document.getElementsByClassName("app")[0];
+//Tableau pour stocker les indices récupérés
+let inventory = [];
 //Click du début
 buttonStart.addEventListener("click", () => {
   anime({
@@ -12,7 +14,7 @@ buttonStart.addEventListener("click", () => {
   });
   setTimeout(() => {
     clearScreen();
-    intro();
+    roomTwo();
   }, 1000);
 });
 
@@ -50,8 +52,6 @@ function intro() {
   });
 }
 function roomOne() {
-  //Tableau pour stocker les indices récupérés
-  let inventory = [];
   //Tout ce truc là c'est à afficher
   const createDiv = document.createElement("div");
   createDiv.classList.add("room1");
@@ -60,21 +60,13 @@ function roomOne() {
   createImage.setAttribute("usemap", "#room1");
   const createMap = document.createElement("map");
   createMap.setAttribute("name", "room1");
-  let createArea1 = document.createElement("area");
-  createArea1.setAttribute("shape", "rect");
-  createArea1.setAttribute("coords", "500,380,700,500");
+  let createArea1 = createArea("500,380,700,500");
   createMap.appendChild(createArea1);
-  let createArea2 = document.createElement("area");
-  createArea2.setAttribute("shape", "rect");
-  createArea2.setAttribute("coords", "800,380,900,500");
+  let createArea2 = createArea("800,380,900,500");
   createMap.appendChild(createArea2);
-  let createArea3 = document.createElement("area");
-  createArea3.setAttribute("shape", "rect");
-  createArea3.setAttribute("coords", "100,380,200,500");
+  let createArea3 = createArea("100,380,200,500");
   createMap.appendChild(createArea3);
-  let createArea4 = document.createElement("area");
-  createArea4.setAttribute("shape", "rect");
-  createArea4.setAttribute("coords", "1200,580,1250,700");
+  let createArea4 = createArea("1200,580,1250,700");
   createMap.appendChild(createArea4);
   createDiv.appendChild(createImage);
   createDiv.appendChild(createMap);
@@ -86,7 +78,7 @@ function roomOne() {
       "Vous avez trouvé une note avec écrit 'Trouvez les 3 indices pour sortir de cette salle' "
     );
     //On vérifie si y'a un click sur la croix
-    checkPopUpClose();
+    checkPopUpClose("room1");
     //Et là vérifie si il clique sur une zone indice
     createArea2.addEventListener("click", () => {
       createPopUp(
@@ -96,28 +88,22 @@ function roomOne() {
       //Ca évite de pouvoir cliquer 3 fois sur le même indice et de push 3 fois le même indice dans le tableau
       !inventory.includes("indice1") ? inventory.push("indice1") : null;
       //Si il a récupéré les 3 indices, on lui balance la fin de la salle
-      if (inventory.length >= 3) {
-        endRoom1();
-      }
-      checkPopUpClose();
+
+      checkPopUpClose("room1");
     });
     createArea3.addEventListener("click", () => {
       createPopUp(
         "Vous avez trouvé un indice ! 'Une bonne description c'est la clé !' "
       );
       !inventory.includes("indice2") ? inventory.push("indice2") : null;
-      if (inventory.length >= 3) {
-        endRoom1();
-      }
-      checkPopUpClose();
+
+      checkPopUpClose("room1");
     });
     createArea4.addEventListener("click", () => {
       createPopUp("Vous avez trouvé un indice ! 'Un beau CV c'est la clé !' ");
       !inventory.includes("indice3") ? inventory.push("indice3") : null;
-      if (inventory.length >= 3) {
-        endRoom1();
-      }
-      checkPopUpClose();
+
+      checkPopUpClose("room1");
     });
   });
 }
@@ -130,17 +116,73 @@ function endRoom1() {
     direction: "alternate",
   });
   setTimeout(() => {
+    inventory = "";
+    console.table(inventory);
     clearScreen();
+    roomTwo();
   }, 1000);
 }
 
-function roomThree() {}
+function roomTwo() {
+  //Tout ce truc là c'est à afficher
+  const createDiv = document.createElement("div");
+  createDiv.classList.add("room2");
+  const createImage = document.createElement("img");
+  createImage.setAttribute("src", "./img/room2.jpg");
+  createImage.setAttribute("usemap", "#room2");
+  const createMap = document.createElement("map");
+  createMap.setAttribute("name", "room2");
 
-function checkPopUpClose() {
+  let createArea1 = createArea("170,380,220,450");
+  createMap.appendChild(createArea1);
+  let createArea2 = createArea("850,290,1100,400");
+  createMap.appendChild(createArea2);
+  let createArea3 = createArea("530,90,590,210", "test");
+  createMap.appendChild(createArea3);
+  createDiv.appendChild(createImage);
+  createDiv.appendChild(createMap);
+  app.appendChild(createDiv);
+
+  createArea1.addEventListener("click", () => {
+    let createDivPhoto = document.createElement("div");
+    createDivPhoto.classList.add("photos");
+    let createImgBonne = document.createElement("img");
+    let createImgMauvaise = document.createElement("img");
+    createImgBonne.setAttribute("src", "./img/photoBonne.png");
+    createImgMauvaise.setAttribute("src", "./img/photoMauvaise.png");
+    createImgBonne.setAttribute("width", "150px");
+    createImgMauvaise.setAttribute("width", "150px");
+    let createButton = document.createElement("button");
+    createButton.classList.add("btn", "btn-primary", "btnPopUp");
+    createButton.innerHTML = "X";
+    createDivPhoto.appendChild(createButton);
+    createDivPhoto.appendChild(createImgBonne);
+    createDivPhoto.appendChild(createImgMauvaise);
+    createDiv.appendChild(createDivPhoto);
+    checkPopUpClose("room2");
+  });
+}
+
+//Fonction de création de zone pour éviter les répétitions
+function createArea(coord, link) {
+  let area = document.createElement("area");
+  area.setAttribute("shape", "rect");
+  area.setAttribute("coords", coord);
+  link != undefined ? area.setAttribute("href", link) : null;
+
+  return area;
+}
+
+function checkPopUpClose(room) {
   let getCrossPopUp = document.getElementsByClassName("btnPopUp");
   for (let cross of getCrossPopUp) {
     cross.addEventListener("click", () => {
       cross.parentNode.remove();
+      if (inventory.length >= 3) {
+        if (room === "room1") {
+          endRoom1();
+        }
+      }
     });
   }
 }

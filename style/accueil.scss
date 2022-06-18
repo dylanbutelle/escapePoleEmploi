@@ -50,12 +50,30 @@
 			object-position: 50% 50%;
 			z-index: 1;
 		}
-		map{
-			height: 100%;
-			
-			area{
-				background-color: red;
-				z-index:5;
+		
+	}
+	.room2{
+		height: 100%;
+		overflow-y: hidden;
+		
+		img{
+			width: 370%;
+			object-position: 50% 50%;
+			z-index: 1;
+		}
+		.photos{
+			position: absolute;
+			background-color: white;
+			height: 180px;
+			width: 100%;
+			top:150px;
+			display: flex;
+			flex-direction: row-reverse;
+			justify-content: space-between;
+			align-items: center;
+			padding:0 10px;
+			img{
+				width: 150px;
 			}
 		}
 	}

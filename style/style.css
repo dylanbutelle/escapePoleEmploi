@@ -50,12 +50,29 @@
   object-position: 50% 50%;
   z-index: 1;
 }
-.app .room1 map {
+.app .room2 {
   height: 100%;
+  overflow-y: hidden;
 }
-.app .room1 map area {
-  background-color: red;
-  z-index: 5;
+.app .room2 img {
+  width: 370%;
+  object-position: 50% 50%;
+  z-index: 1;
+}
+.app .room2 .photos {
+  position: absolute;
+  background-color: white;
+  height: 180px;
+  width: 100%;
+  top: 150px;
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 10px;
+}
+.app .room2 .photos img {
+  width: 150px;
 }
 .app .popUp {
   background-color: white;
