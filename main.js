@@ -14,7 +14,7 @@ buttonStart.addEventListener("click", () => {
   });
   setTimeout(() => {
     clearScreen();
-    roomTwo();
+    intro();
   }, 1000);
 });
 
@@ -137,8 +137,10 @@ function roomTwo() {
   createMap.appendChild(createArea1);
   let createArea2 = createArea("850,290,1100,400");
   createMap.appendChild(createArea2);
-  let createArea3 = createArea("530,90,590,210", "test");
+  let createArea3 = createArea("530,90,590,210");
   createMap.appendChild(createArea3);
+  let createArea4 = createArea("600,150,850,280", "test");
+  createMap.appendChild(createArea4);
   createDiv.appendChild(createImage);
   createDiv.appendChild(createMap);
   app.appendChild(createDiv);
@@ -158,6 +160,40 @@ function roomTwo() {
     createDivPhoto.appendChild(createButton);
     createDivPhoto.appendChild(createImgBonne);
     createDivPhoto.appendChild(createImgMauvaise);
+    createDiv.appendChild(createDivPhoto);
+    checkPopUpClose("room2");
+  });
+
+  createArea2.addEventListener("click", () => {
+    let createDivPhoto = document.createElement("div");
+    createDivPhoto.classList.add("photos");
+    let createImgFB = document.createElement("img");
+    let createImgLKD = document.createElement("img");
+    createImgFB.setAttribute("src", "./img/LogoFacebook.png");
+    createImgLKD.setAttribute("src", "./img/LogoLKD.png");
+    createImgFB.setAttribute("width", "150px");
+    createImgLKD.setAttribute("width", "150px");
+    let createButton = document.createElement("button");
+    createButton.classList.add("btn", "btn-primary", "btnPopUp");
+    createButton.innerHTML = "X";
+    createDivPhoto.appendChild(createButton);
+    createDivPhoto.appendChild(createImgFB);
+    createDivPhoto.appendChild(createImgLKD);
+    createDiv.appendChild(createDivPhoto);
+    checkPopUpClose("room2");
+  });
+
+  createArea3.addEventListener("click", () => {
+    let createDivPhoto = document.createElement("div");
+    createDivPhoto.classList.add("photos");
+    let createImgMeme = document.createElement("img");
+    createImgMeme.setAttribute("src", "./img/Meme.jpg");
+    createImgMeme.setAttribute("width", "150px");
+    let createButton = document.createElement("button");
+    createButton.classList.add("btn", "btn-primary", "btnPopUp");
+    createButton.innerHTML = "X";
+    createDivPhoto.appendChild(createButton);
+    createDivPhoto.appendChild(createImgMeme);
     createDiv.appendChild(createDivPhoto);
     checkPopUpClose("room2");
   });
