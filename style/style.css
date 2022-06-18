@@ -74,6 +74,39 @@
 .app .room2 .photos img {
   width: 150px;
 }
+.app .room2 .divList {
+  position: absolute;
+  background-color: white;
+  height: 500px;
+  width: 100%;
+  top: 150px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 10px;
+}
+.app .room2 .divList .titleList {
+  display: flex;
+  width: 100%;
+  flex-direction: row-reverse;
+  justify-content: space-around;
+  padding: 20px 0;
+}
+.app .room2 .divList .listItem {
+  width: 95%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 75%;
+}
+.app .room2 .divList .listItem .divInput {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.app .room2 .divList .listItem .divInput label {
+  text-align: center;
+}
 .app .popUp {
   background-color: white;
   border: 2px solid black;
