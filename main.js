@@ -14,7 +14,7 @@ buttonStart.addEventListener("click", () => {
   });
   setTimeout(() => {
     clearScreen();
-    intro();
+    roomTwo();
   }, 1000);
 });
 
@@ -139,7 +139,7 @@ function roomTwo() {
   createMap.appendChild(createArea2);
   let createArea3 = createArea("530,90,590,210");
   createMap.appendChild(createArea3);
-  let createArea4 = createArea("600,150,850,280", "test");
+  let createArea4 = createArea("600,250,800,350");
   createMap.appendChild(createArea4);
   createDiv.appendChild(createImage);
   createDiv.appendChild(createMap);
@@ -197,6 +197,78 @@ function roomTwo() {
     createDiv.appendChild(createDivPhoto);
     checkPopUpClose("room2");
   });
+
+  createArea4.addEventListener("click", () => {
+    let createDivList = document.createElement("div");
+    createDivList.classList.add("divList");
+    let createDivTitleWithClose = document.createElement("div");
+    createDivTitleWithClose.classList.add("titleList");
+    let createButton = document.createElement("button");
+    createButton.classList.add("btn", "btn-primary", "btnPopUp");
+    createButton.innerHTML = "X";
+    createDivTitleWithClose.appendChild(createButton);
+    let createTitle = document.createElement("h2");
+    createTitle.innerHTML = "Liste des choses à faire";
+    createDivTitleWithClose.appendChild(createTitle);
+    let createList = document.createElement("div");
+    createList.classList.add("listItem");
+
+    let div1 = createDivInputLabel(
+      "checkbox",
+      "input1",
+      "input1",
+      "Mon Facebook doit être privé"
+    );
+    let div2 = createDivInputLabel(
+      "checkbox",
+      "input2",
+      "input2",
+      "Un compte LinkedIn peut être mieux pour publier des choses personnelles"
+    );
+    let div3 = createDivInputLabel(
+      "checkbox",
+      "input3",
+      "input3",
+      "Je dois être dans le numérique pour ouvrir un compte LinkedIn"
+    );
+    let div4 = createDivInputLabel(
+      "checkbox",
+      "input4",
+      "input4",
+      "Une photo bien faite sur mon compte professionnel et sur mon CV est bien mieux qu'une photo rapide"
+    );
+    let div5 = createDivInputLabel(
+      "checkbox",
+      "input5",
+      "input5",
+      "Mon compte Facebook n'intéresse pas les recruteurs"
+    );
+    let div6 = createDivInputLabel(
+      "checkbox",
+      "input6",
+      "input6",
+      "Une description courte de moi est mieux qu'une description longue"
+    );
+    createList.appendChild(div1);
+    createList.appendChild(div2);
+    createList.appendChild(div3);
+    createList.appendChild(div4);
+    createList.appendChild(div5);
+    createList.appendChild(div6);
+    let createButtonVerify = document.createElement("button");
+    createButtonVerify.classList.add("btn", "btn-primary", "btnVerify");
+    createButtonVerify.innerHTML = "Vérifier";
+    createDivList.appendChild(createDivTitleWithClose);
+    createDivList.appendChild(createList);
+    createDivList.appendChild(createButtonVerify);
+    createDiv.appendChild(createDivList);
+    let getCrossPopUp = document.getElementsByClassName("btnPopUp");
+    for (let cross of getCrossPopUp) {
+      cross.addEventListener("click", () => {
+        cross.parentNode.parentNode.remove();
+      });
+    }
+  });
 }
 
 //Fonction de création de zone pour éviter les répétitions
@@ -233,4 +305,19 @@ function createPopUp(msg) {
   createDiv.appendChild(createP);
   createDiv.appendChild(createButton);
   app.appendChild(createDiv);
+}
+function createDivInputLabel(type, id, name, text) {
+  let div = document.createElement("div");
+  div.classList.add("divInput");
+  let input = document.createElement("input");
+  input.setAttribute("type", type);
+  input.setAttribute("name", name);
+  input.setAttribute("id", id);
+  let label = document.createElement("label");
+  label.setAttribute("name", name);
+  label.innerHTML = text;
+  div.appendChild(input);
+  div.appendChild(label);
+
+  return div;
 }
