@@ -4,6 +4,7 @@
 	display: flex;
 	flex-direction: column;
 	justify-content : space-evenly;
+
 	.title{
 		display: flex;
 		justify-content: center;
@@ -42,13 +43,20 @@
 			text-align: center;
 		}
 	}
+	.version{
+		width: 100%;
+		display: flex;
+		justify-content: center;
+	}
 	.room1{
 		height: 100%;
 		overflow-y: hidden;
+		
 		img{
 			width: 350%;
 			object-position: 50% 50%;
 			z-index: 1;
+			
 		}
 		
 	}
@@ -110,6 +118,63 @@
 			}
 		}
 	}
+	.room4{
+		height: 100%;
+		overflow-y: hidden;
+		.inputShare{
+			position: absolute;
+			background-color: white;
+			height: 180px;
+			width: 100%;
+			top:150px;
+			display: flex;
+			flex-direction: column;
+			justify-content: space-around;
+			align-items: center;
+			padding:0 10px;
+			.titleList{
+				display: flex;
+				width: 100%;
+				justify-content: space-around;
+			}
+			.divInput{
+				display: flex;
+				flex-direction: row-reverse;
+				width: 100%;
+				justify-content: space-around;
+			}
+		}
+		img{
+			width: 400%;
+			object-position: 50% 50%;
+			z-index: 1;
+		}
+	}
+	.room5{
+		height: 100%;
+		overflow-y: hidden;
+		
+		img{
+			width: 370%;
+			object-position: 50% 50%;
+			z-index: 1;
+		}
+		
+	}
+	.divCharacters{
+		width: 100%;
+		padding: 10px;
+		position: absolute;
+			background-color: white;
+			
+			width: 100%;
+			top:200px;
+		.divButtons{
+			display: flex;
+			width: 100%;
+			justify-content: space-around;
+		}
+	}
 	.popUp{
 		background-color: white;
 		border : 2px solid black;
@@ -121,5 +186,15 @@
 			margin-bottom: 0;
 			text-align: center;
 		}
+	}
+	.divTitleLoose{
+		width: 100%;
+		display: flex;
+		justify-content: center;
+	}
+	.divTitleWin{
+		width: 100%;
+		display: flex;
+		justify-content: center;
 	}
 }

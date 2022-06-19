@@ -1,4 +1,5 @@
 import anime from "animejs/lib/anime.es.js";
+
 //Cstte
 const buttonStart = document.getElementsByTagName("button")[0];
 const app = document.getElementsByClassName("app")[0];
@@ -216,37 +217,37 @@ function roomTwo() {
     let div1 = createDivInputLabel(
       "checkbox",
       "input1",
-      "input1",
+      "input",
       "Mon Facebook doit être privé"
     );
     let div2 = createDivInputLabel(
       "checkbox",
       "input2",
-      "input2",
-      "Un compte LinkedIn peut être mieux pour publier des choses personnelles"
+      "input",
+      "Un compte LinkedIn est mieux pour publier des choses personnelles"
     );
     let div3 = createDivInputLabel(
       "checkbox",
       "input3",
-      "input3",
+      "input",
       "Je dois être dans le numérique pour ouvrir un compte LinkedIn"
     );
     let div4 = createDivInputLabel(
       "checkbox",
       "input4",
-      "input4",
-      "Une photo bien faite sur mon compte professionnel et sur mon CV est bien mieux qu'une photo rapide"
+      "input",
+      "Une photo bien faite sur mon compte professionnel et sur mon CV est bien mieux qu'une photo en soirée"
     );
     let div5 = createDivInputLabel(
       "checkbox",
       "input5",
-      "input5",
+      "input",
       "Mon compte Facebook n'intéresse pas les recruteurs"
     );
     let div6 = createDivInputLabel(
       "checkbox",
       "input6",
-      "input6",
+      "input",
       "Une description courte de moi est mieux qu'une description longue"
     );
     createList.appendChild(div1);
@@ -268,6 +269,40 @@ function roomTwo() {
         cross.parentNode.parentNode.remove();
       });
     }
+    document
+      .getElementsByClassName("btnVerify")[0]
+      .addEventListener("click", () => {
+        let error = false;
+        let responses = ["input1", "input4"];
+        let checkboxes = document.querySelectorAll(
+          'input[name="input"]:checked'
+        );
+        let output = [];
+        checkboxes.forEach((checkbox) => {
+          output.push(checkbox.id);
+        });
+        if (responses.length === output.length) {
+          for (let i = 0; i < responses.length; i++) {
+            if (output[i] !== responses[i]) {
+              error = true;
+            }
+          }
+        } else {
+          error = true;
+        }
+        if (!error) {
+          anime({
+            targets: ".app",
+            translateX: "350px",
+            easing: "easeInOutQuad",
+            direction: "alternate",
+          });
+          setTimeout(() => {
+            clearScreen();
+            roomFour();
+          }, 1000);
+        }
+      });
   });
 }
 
@@ -328,6 +363,154 @@ function roomThree() {
   });
 }
 
+function roomFour() {
+  //Tout ce truc là c'est à afficher
+  const createDiv = document.createElement("div");
+  createDiv.classList.add("room4");
+  const createImage = document.createElement("img");
+  createImage.setAttribute("src", "./img/room4.jpg");
+  createImage.setAttribute("usemap", "#room4");
+  const createMap = document.createElement("map");
+  createMap.setAttribute("name", "room4");
+  createDiv.appendChild(createImage);
+  let createArea1 = createArea("100,300,200,400");
+  let createArea2 = createArea("850,500,980,650");
+  let createArea3 = createArea("1250,500,1350,600");
+  let createArea4 = createArea("1300,200,1400,350");
+  createMap.appendChild(createArea1);
+  createMap.appendChild(createArea2);
+  createMap.appendChild(createArea3);
+  createMap.appendChild(createArea4);
+  createDiv.appendChild(createMap);
+
+  app.appendChild(createDiv);
+
+  createArea1.addEventListener("click", () => {
+    createPopUp("Vous avez trouvé une note avec écrit '16-1-18'");
+    checkPopUpClose();
+  });
+  createArea2.addEventListener("click", () => {
+    createPopUp("Vous avez trouvé une note avec écrit '20-1-7'");
+    checkPopUpClose();
+  });
+  createArea3.addEventListener("click", () => {
+    createPopUp("Vous avez trouvé une note avec écrit '5-18'");
+    checkPopUpClose();
+  });
+  createArea4.addEventListener("click", () => {
+    let createDivInput = document.createElement("div");
+    createDivInput.classList.add("inputShare");
+    let createDivTitleWithClose = document.createElement("div");
+    createDivTitleWithClose.classList.add("titleList");
+    let createButton = document.createElement("button");
+    createButton.classList.add("btn", "btn-primary", "btnPopUp");
+    createButton.innerHTML = "X";
+
+    let createTitle = document.createElement("h2");
+    createTitle.innerHTML = "MOT-CLE A TROUVER";
+    createDivTitleWithClose.appendChild(createTitle);
+    createDivTitleWithClose.appendChild(createButton);
+    createDivInput.appendChild(createDivTitleWithClose);
+    let createInput = createDivInputLabel(
+      "text",
+      "toFind",
+      "toFind",
+      "Réponse"
+    );
+    let createButtonVerify = document.createElement("button");
+    createButtonVerify.classList.add("btn", "btn-primary", "btnVerify");
+    createButtonVerify.innerHTML = "Vérifier";
+    createDivInput.appendChild(createInput);
+    createDivInput.appendChild(createButtonVerify);
+    createDiv.appendChild(createDivInput);
+    let getCrossPopUp = document.getElementsByClassName("btnPopUp");
+    for (let cross of getCrossPopUp) {
+      cross.addEventListener("click", () => {
+        cross.parentNode.parentNode.remove();
+      });
+    }
+    document
+      .getElementsByClassName("btnVerify")[0]
+      .addEventListener("click", () => {
+        let inputShare = document.getElementsByTagName("input")[0].value;
+        if (inputShare.toUpperCase() === "PARTAGER") {
+          endRoomFour();
+        }
+      });
+  });
+}
+
+function endRoomFour() {
+  anime({
+    targets: ".app",
+    translateX: "350px",
+    easing: "easeInOutQuad",
+    direction: "alternate",
+  });
+  setTimeout(() => {
+    clearScreen();
+    roomFive();
+  }, 1000);
+}
+
+function roomFive() {
+  const createDiv = document.createElement("div");
+  createDiv.classList.add("room5");
+  const createImage = document.createElement("img");
+  createImage.setAttribute("src", "./img/room5.jpg");
+  createImage.setAttribute("usemap", "#room5");
+  const createMap = document.createElement("map");
+  createMap.setAttribute("name", "room5");
+  createDiv.appendChild(createImage);
+  let createArea1 = createArea("50,200,370,800");
+  let createArea2 = createArea("500,200,820,800");
+  let createArea3 = createArea("1050,200,1370,800");
+  createMap.appendChild(createArea1);
+  createMap.appendChild(createArea2);
+  createMap.appendChild(createArea3);
+  createDiv.appendChild(createMap);
+
+  app.appendChild(createDiv);
+
+  createArea1.addEventListener("click", () => {
+    createFinalsDiv(
+      [
+        "Très présent sur LinkedIn",
+        "Compte Facebook en public",
+        "Photo de profil correct",
+        "Se décrit sur 2 lignes",
+        "S'y connait en informatique",
+      ],
+      "Gaetan"
+    );
+  });
+  createArea2.addEventListener("click", () => {
+    createFinalsDiv(
+      [
+        "Très peu présente sur LinkedIn",
+        "Publie toute sa vie sur Facebook",
+        "N'a pas de photo d'elle sur ses réseaux professionnel",
+        "Se décrit sur 1 paragraphe entier",
+        "A du mal à s'exprimer",
+      ],
+      "Marine"
+    );
+  });
+  createArea3.addEventListener("click", () => {
+    createFinalsDiv(
+      [
+        "Publie régulièrement sur LinkedIn",
+        "Son compte Facebook est privé",
+        "Photo d'elle souriante avec fond uni",
+        "N'a pas d'expérience dans la vente",
+        "S'exprime très bien",
+        "A déjà travaillé dans le développement informatique",
+      ],
+      "Naomie"
+    );
+  });
+}
+
 //Fonction de création de zone pour éviter les répétitions
 function createArea(coord, link) {
   let area = document.createElement("area");
@@ -377,4 +560,77 @@ function createDivInputLabel(type, id, name, text) {
   div.appendChild(label);
 
   return div;
+}
+function createFinalsDiv(elements, characterName) {
+  let createDiv = document.createElement("div");
+  createDiv.classList.add("divCharacters");
+  let title = document.createElement("h1");
+  title.innerHTML = characterName;
+  createDiv.appendChild(title);
+
+  let createUl = document.createElement("ul");
+  for (let elem of elements) {
+    let createLi = document.createElement("li");
+    createLi.innerHTML = elem;
+    createUl.appendChild(createLi);
+  }
+  createDiv.appendChild(createUl);
+  let createDivButton = document.createElement("div");
+  createDivButton.classList.add("divButtons");
+  let createButtonChoose = document.createElement("button");
+  createButtonChoose.classList.add("btn", "btn-success");
+  createButtonChoose.innerHTML = "Choisir " + characterName;
+  createDivButton.appendChild(createButtonChoose);
+  let createButtonClose = document.createElement("button");
+  createButtonClose.classList.add("btn", "btn-danger");
+  createButtonClose.innerHTML = "Trouver un autre candidat";
+  createDivButton.appendChild(createButtonClose);
+  createDiv.appendChild(createDivButton);
+  createButtonChoose.addEventListener("click", () => {
+    if (characterName !== "Naomie") {
+      anime({
+        targets: ".app",
+        translateX: "350px",
+        easing: "easeInOutQuad",
+        direction: "alternate",
+      });
+      setTimeout(() => {
+        clearScreen();
+        roomLoose();
+      }, 1000);
+    } else {
+      anime({
+        targets: ".app",
+        translateX: "350px",
+        easing: "easeInOutQuad",
+        direction: "alternate",
+      });
+      setTimeout(() => {
+        clearScreen();
+        roomWin();
+      }, 1000);
+    }
+  });
+  createButtonClose.addEventListener("click", () => {
+    createButtonClose.parentNode.parentNode.remove();
+  });
+  app.appendChild(createDiv);
+}
+
+function roomLoose() {
+  let divTitle = document.createElement("div");
+  divTitle.classList.add("divTitleLoose");
+  let title = document.createElement("h1");
+  title.innerHTML = "PERDU";
+  divTitle.appendChild(title);
+  app.appendChild(divTitle);
+}
+
+function roomWin() {
+  let divTitle = document.createElement("div");
+  divTitle.classList.add("divTitleWin");
+  let title = document.createElement("h1");
+  title.innerHTML = "GAGNÉ";
+  divTitle.appendChild(title);
+  app.appendChild(divTitle);
 }
