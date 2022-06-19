@@ -608,7 +608,7 @@ function createFinalsDiv(elements, characterName) {
       setTimeout(() => {
         clearScreen();
         roomWin();
-      }, 1000);
+      }, 1001);
     }
   });
   createButtonClose.addEventListener("click", () => {
