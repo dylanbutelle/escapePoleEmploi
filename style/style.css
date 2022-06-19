@@ -178,6 +178,16 @@
   margin-bottom: 0;
   text-align: center;
 }
+.app .divTitleLoose {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.app .divTitleWin {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
 
 .room3 {
   height: 100%;

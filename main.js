@@ -15,7 +15,7 @@ buttonStart.addEventListener("click", () => {
   });
   setTimeout(() => {
     clearScreen();
-    roomFive();
+    intro();
   }, 1000);
 });
 
@@ -299,7 +299,7 @@ function roomTwo() {
           });
           setTimeout(() => {
             clearScreen();
-            roomThree();
+            roomFour();
           }, 1000);
         }
       });
@@ -588,7 +588,27 @@ function createFinalsDiv(elements, characterName) {
   createDiv.appendChild(createDivButton);
   createButtonChoose.addEventListener("click", () => {
     if (characterName !== "Naomie") {
-      roomLoose();
+      anime({
+        targets: ".app",
+        translateX: "350px",
+        easing: "easeInOutQuad",
+        direction: "alternate",
+      });
+      setTimeout(() => {
+        clearScreen();
+        roomLoose();
+      }, 1000);
+    } else {
+      anime({
+        targets: ".app",
+        translateX: "350px",
+        easing: "easeInOutQuad",
+        direction: "alternate",
+      });
+      setTimeout(() => {
+        clearScreen();
+        roomWin();
+      }, 1000);
     }
   });
   createButtonClose.addEventListener("click", () => {
@@ -598,9 +618,19 @@ function createFinalsDiv(elements, characterName) {
 }
 
 function roomLoose() {
-  console.log("perdu");
+  let divTitle = document.createElement("div");
+  divTitle.classList.add("divTitleLoose");
+  let title = document.createElement("h1");
+  title.innerHTML = "PERDU";
+  divTitle.appendChild(title);
+  app.appendChild(divTitle);
 }
 
 function roomWin() {
-  console.log("gagné");
+  let divTitle = document.createElement("div");
+  divTitle.classList.add("divTitleWin");
+  let title = document.createElement("h1");
+  title.innerHTML = "GAGNÉ";
+  divTitle.appendChild(title);
+  app.appendChild(divTitle);
 }
