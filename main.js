@@ -462,17 +462,53 @@ function roomFive() {
   const createMap = document.createElement("map");
   createMap.setAttribute("name", "room5");
   createDiv.appendChild(createImage);
-  let createArea1 = createArea("100,300,200,400");
-  let createArea2 = createArea("850,500,980,650");
-  let createArea3 = createArea("1250,500,1350,600");
-  let createArea4 = createArea("1300,200,1400,350");
+  let createArea1 = createArea("50,200,370,800");
+  let createArea2 = createArea("500,200,820,800");
+  let createArea3 = createArea("1050,200,1370,800");
   createMap.appendChild(createArea1);
   createMap.appendChild(createArea2);
   createMap.appendChild(createArea3);
-  createMap.appendChild(createArea4);
   createDiv.appendChild(createMap);
 
   app.appendChild(createDiv);
+
+  createArea1.addEventListener("click", () => {
+    createFinalsDiv(
+      [
+        "Très présent sur LinkedIn",
+        "Compte Facebook en public",
+        "Photo de profil correct",
+        "Se décrit sur 2 lignes",
+        "S'y connait en informatique",
+      ],
+      "Gaetan"
+    );
+  });
+  createArea2.addEventListener("click", () => {
+    createFinalsDiv(
+      [
+        "Très peu présente sur LinkedIn",
+        "Publie toute sa vie sur Facebook",
+        "N'a pas de photo d'elle sur ses réseaux professionnel",
+        "Se décrit sur 1 paragraphe entier",
+        "A du mal à s'exprimer",
+      ],
+      "Marine"
+    );
+  });
+  createArea3.addEventListener("click", () => {
+    createFinalsDiv(
+      [
+        "Publie régulièrement sur LinkedIn",
+        "Son compte Facebook est privé",
+        "Photo d'elle souriante avec fond uni",
+        "N'a pas d'expérience dans la vente",
+        "S'exprime très bien",
+        "A déjà travaillé dans le développement informatique",
+      ],
+      "Naomie"
+    );
+  });
 }
 
 //Fonction de création de zone pour éviter les répétitions
@@ -524,4 +560,47 @@ function createDivInputLabel(type, id, name, text) {
   div.appendChild(label);
 
   return div;
+}
+function createFinalsDiv(elements, characterName) {
+  let createDiv = document.createElement("div");
+  createDiv.classList.add("divCharacters");
+  let title = document.createElement("h1");
+  title.innerHTML = characterName;
+  createDiv.appendChild(title);
+
+  let createUl = document.createElement("ul");
+  for (let elem of elements) {
+    let createLi = document.createElement("li");
+    createLi.innerHTML = elem;
+    createUl.appendChild(createLi);
+  }
+  createDiv.appendChild(createUl);
+  let createDivButton = document.createElement("div");
+  createDivButton.classList.add("divButtons");
+  let createButtonChoose = document.createElement("button");
+  createButtonChoose.classList.add("btn", "btn-success");
+  createButtonChoose.innerHTML = "Choisir " + characterName;
+  createDivButton.appendChild(createButtonChoose);
+  let createButtonClose = document.createElement("button");
+  createButtonClose.classList.add("btn", "btn-danger");
+  createButtonClose.innerHTML = "Trouver un autre candidat";
+  createDivButton.appendChild(createButtonClose);
+  createDiv.appendChild(createDivButton);
+  createButtonChoose.addEventListener("click", () => {
+    if (characterName !== "Naomie") {
+      roomLoose();
+    }
+  });
+  createButtonClose.addEventListener("click", () => {
+    createButtonClose.parentNode.parentNode.remove();
+  });
+  app.appendChild(createDiv);
+}
+
+function roomLoose() {
+  console.log("perdu");
+}
+
+function roomWin() {
+  console.log("gagné");
 }
