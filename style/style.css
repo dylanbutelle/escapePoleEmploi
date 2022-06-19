@@ -41,6 +41,11 @@
 .app .textPresentation p {
   text-align: center;
 }
+.app .version {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
 .app .room1 {
   height: 100%;
   overflow-y: hidden;
@@ -106,6 +111,47 @@
 }
 .app .room2 .divList .listItem .divInput label {
   text-align: center;
+}
+.app .room4 {
+  height: 100%;
+  overflow-y: hidden;
+}
+.app .room4 .inputShare {
+  position: absolute;
+  background-color: white;
+  height: 180px;
+  width: 100%;
+  top: 150px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  padding: 0 10px;
+}
+.app .room4 .inputShare .titleList {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+}
+.app .room4 .inputShare .divInput {
+  display: flex;
+  flex-direction: row-reverse;
+  width: 100%;
+  justify-content: space-around;
+}
+.app .room4 img {
+  width: 400%;
+  object-position: 50% 50%;
+  z-index: 1;
+}
+.app .room5 {
+  height: 100%;
+  overflow-y: hidden;
+}
+.app .room5 img {
+  width: 370%;
+  object-position: 50% 50%;
+  z-index: 1;
 }
 .app .popUp {
   background-color: white;
