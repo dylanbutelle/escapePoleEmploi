@@ -57,7 +57,7 @@ function roomOne() {
   const createDiv = document.createElement("div");
   createDiv.classList.add("room1");
   const createImage = document.createElement("img");
-  createImage.setAttribute("src", "./img/room1.jpg");
+  createImage.setAttribute("src", "./public/img/room1.jpg");
   createImage.setAttribute("usemap", "#room1");
   const createMap = document.createElement("map");
   createMap.setAttribute("name", "room1");
@@ -129,7 +129,7 @@ function roomTwo() {
   const createDiv = document.createElement("div");
   createDiv.classList.add("room2");
   const createImage = document.createElement("img");
-  createImage.setAttribute("src", "./img/room2.jpg");
+  createImage.setAttribute("src", "./public/img/room2.jpg");
   createImage.setAttribute("usemap", "#room2");
   const createMap = document.createElement("map");
   createMap.setAttribute("name", "room2");
@@ -151,8 +151,8 @@ function roomTwo() {
     createDivPhoto.classList.add("photos");
     let createImgBonne = document.createElement("img");
     let createImgMauvaise = document.createElement("img");
-    createImgBonne.setAttribute("src", "./img/photoBonne.png");
-    createImgMauvaise.setAttribute("src", "./img/photoMauvaise.png");
+    createImgBonne.setAttribute("src", "./public/img//photoBonne.png");
+    createImgMauvaise.setAttribute("src", "./public/img//photoMauvaise.png");
     createImgBonne.setAttribute("width", "150px");
     createImgMauvaise.setAttribute("width", "150px");
     let createButton = document.createElement("button");
@@ -170,8 +170,8 @@ function roomTwo() {
     createDivPhoto.classList.add("photos");
     let createImgFB = document.createElement("img");
     let createImgLKD = document.createElement("img");
-    createImgFB.setAttribute("src", "./img/LogoFacebook.png");
-    createImgLKD.setAttribute("src", "./img/LogoLKD.png");
+    createImgFB.setAttribute("src", "./public/img/LogoFacebook.png");
+    createImgLKD.setAttribute("src", "./public/img/LogoLKD.png");
     createImgFB.setAttribute("width", "150px");
     createImgLKD.setAttribute("width", "150px");
     let createButton = document.createElement("button");
@@ -188,7 +188,7 @@ function roomTwo() {
     let createDivPhoto = document.createElement("div");
     createDivPhoto.classList.add("photos");
     let createImgMeme = document.createElement("img");
-    createImgMeme.setAttribute("src", "./img/Meme.jpg");
+    createImgMeme.setAttribute("src", "./public/img/Meme.jpg");
     createImgMeme.setAttribute("width", "150px");
     let createButton = document.createElement("button");
     createButton.classList.add("btn", "btn-primary", "btnPopUp");
@@ -368,7 +368,7 @@ function roomFour() {
   const createDiv = document.createElement("div");
   createDiv.classList.add("room4");
   const createImage = document.createElement("img");
-  createImage.setAttribute("src", "./img/room4.jpg");
+  createImage.setAttribute("src", "./public/img/room4.jpg");
   createImage.setAttribute("usemap", "#room4");
   const createMap = document.createElement("map");
   createMap.setAttribute("name", "room4");
@@ -457,7 +457,7 @@ function roomFive() {
   const createDiv = document.createElement("div");
   createDiv.classList.add("room5");
   const createImage = document.createElement("img");
-  createImage.setAttribute("src", "./img/room5.jpg");
+  createImage.setAttribute("src", "./public/img/room5.jpg");
   createImage.setAttribute("usemap", "#room5");
   const createMap = document.createElement("map");
   createMap.setAttribute("name", "room5");
