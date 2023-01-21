@@ -1,4 +1,4 @@
-import anime from "animejs/lib/anime.es.js";
+import anime from "./node_modules/animejs/lib/anime.es.js";
 
 //Cstte
 const buttonStart = document.getElementsByTagName("button")[0];
@@ -608,7 +608,7 @@ function createFinalsDiv(elements, characterName) {
       setTimeout(() => {
         clearScreen();
         roomWin();
-      }, 1000);
+      }, 1001);
     }
   });
   createButtonClose.addEventListener("click", () => {
