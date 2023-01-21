@@ -1,4 +1,4 @@
-import anime from "animejs/lib/anime.es.js";
+import anime from "./node_modules/animejs/lib/anime.es.js";
 
 //Cstte
 const buttonStart = document.getElementsByTagName("button")[0];
